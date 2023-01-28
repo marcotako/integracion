@@ -4,7 +4,11 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        agent: ['windows-latest', 'ubuntu-latest', 'macos-latest']
+    runs-on: ${{matrix.agent}}
+    name: Integration in ${{matrix.agent}}
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-dotnet@v3
