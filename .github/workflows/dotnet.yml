@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-dotnet@v1
+    - uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '2.2.108'
+        dotnet-version: '7.x.x'
     - run: dotnet build Chat.sln
     - run: dotnet test Chat.sln  
