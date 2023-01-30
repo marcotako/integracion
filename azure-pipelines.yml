@@ -34,3 +34,11 @@ steps:
   displayName: "Dotnet Test"
   inputs:
     command: 'test'
+    arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+    publishTestResults: true
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage report'
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
